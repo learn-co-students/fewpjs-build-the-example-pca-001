@@ -3,9 +3,18 @@ const EMPTY_HEART = '♡'
 const FULL_HEART = '♥'
 
 // Your JavaScript code goes here!
+const likeButtons = document.querySelectorAll(".like-glyph")
 
-
-
+for(const button of likeButtons) {
+  button.addEventListener("click", function(event) {
+    let heart = event.target
+    mimicServerCall("URL")
+    .then(function(response) {
+      heart.innerText = (heart.classList.toggle("activated-heart") ?
+            FULL_HEART : EMPTY_HEART)
+    })
+  })
+}
 
 //------------------------------------------------------------------------------
 // Ignore after this point. Used only for demo purposes
